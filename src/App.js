@@ -6,6 +6,7 @@ import {
 } from "./ui-components";
 import { useState } from "react";
 import { withAuthenticator } from "@aws-amplify/ui-react";
+import { DataStore } from "aws-amplify";
 
 function App({ signOut }) {
   const [showCreateModal, setShowCreateModal] = useState(false);
@@ -22,6 +23,7 @@ function App({ signOut }) {
           Button31632487: {
             onClick: async () => {
               signOut();
+              await DataStore.clear(); // clear local data
             },
           },
         }}
